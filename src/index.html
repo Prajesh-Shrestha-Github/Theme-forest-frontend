@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edumy</title>
+  <link href="/dist/output.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .dropdown-menu {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Preview Header -->
+    <div class="bg-black text-white py-2 w-full fixed top-0 z-20">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <!-- Envato Market Logo -->
+            <div class="flex items-center">
+                <img src="https://envato.com/logo.png" alt="Envato Market" class="h-6 mr-2">
+            </div>
+            <!-- Buy Now Button -->
+            <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Buy Now</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-gray-900 w-full z-10 shadow-lg mt-12 fixed">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Edumy Logo -->
+            <div class="text-2xl font-bold text-white">EDUMY</div>
+
+            <!-- Navigation Menu -->
+            <nav class="hidden lg:flex space-x-6 text-white">
+                <!-- Home Dropdown -->
+                <div class="relative dropdown">
+                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Home <span class="material-icons ml-1">expand_more</span></a>
+                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home 1</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home 2</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home 3</a>
+                    </div>
+                </div>
+
+                <!-- Courses Dropdown -->
+                <div class="relative dropdown">
+                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Courses <span class="material-icons ml-1">expand_more</span></a>
+                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Course 1</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Course 2</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Course 3</a>
+                    </div>
+                </div>
+
+                <!-- Events Dropdown -->
+                <div class="relative dropdown">
+                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Events <span class="material-icons ml-1">expand_more</span></a>
+                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Event 1</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Event 2</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Event 3</a>
+                    </div>
+                </div>
+
+                <!-- Pages Dropdown -->
+                <div class="relative dropdown">
+                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Pages <span class="material-icons ml-1">expand_more</span></a>
+                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Page 1</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Page 2</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Page 3</a>
+                    </div>
+                </div>
+
+                <!-- Blog Dropdown -->
+                <div class="relative dropdown">
+                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Blog <span class="material-icons ml-1">expand_more</span></a>
+                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Blog 1</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Blog 2</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Blog 3</a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <a href="#" class="hover:text-gray-400">Contact</a>
+            </nav>
+
+            <!-- Right Side Actions -->
+            <div class="flex space-x-4 items-center">
+                <a href="#" class="text-white hover:text-gray-400">Login/Register</a>
+                <a href="#" class="relative text-white hover:text-gray-400">
+                    <span class="material-icons">shopping_cart</span>
+                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
+                </a>
+                <a href="#" class="text-white hover:text-gray-400">
+                    <span class="material-icons">search</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+      $(document).ready(function() {
+        $('.dropdown-toggle').click(function(e) {
+          e.preventDefault();
+          $(this).next('.dropdown-menu').toggle();
+        });
+
+        $(document).click(function(e) {
+          if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').hide();
+          }
+        });
+      });
+    </script>
+</body>
+</html>
