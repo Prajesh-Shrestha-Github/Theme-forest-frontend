@@ -1,121 +1,604 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edumy</title>
-  <link href="/dist/output.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- Swiper.js JavaScript -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'edumy-blue': '#4e5bff',
+          }
+        }
+      }
+    }
+  </script>
   <style>
     .dropdown-menu {
-      display: none;
+      z-index: 50;
     }
   </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
-    <!-- Preview Header -->
-    <div class="bg-black text-white py-2 w-full fixed top-0 z-20">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <!-- Envato Market Logo -->
-            <div class="flex items-center">
-                <img src="https://envato.com/logo.png" alt="Envato Market" class="h-6 mr-2">
-            </div>
-            <!-- Buy Now Button -->
-            <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Buy Now</a>
+<!-- Upper Navigation Bar -->
+<header class="bg-black text-white py-4 z-50">
+  <div class="container mx-auto px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24 flex justify-between items-center h-16">
+    <div class="flex items-center space-x-6">
+      <!-- Logo and Edumy text -->
+      <div class="flex items-center space-x-2">
+        <img src="../image/header-logo.png" alt="Edumy Logo" class="h-8">
+        <span class="text-xl font-bold">Edumy</span>
+      </div>
+
+      <!-- Library Dropdown -->
+      <div class="relative group">
+        <button class="bg-edumy-blue px-6 py-2 rounded-full focus:outline-none hover:bg-blue-700 transition duration-300">
+          LIBRARY <i class="fas fa-caret-down ml-2"></i>
+        </button>
+        <div class="dropdown-menu absolute left-0 mt-2 w-48  bg-gray-800 text-gray-100 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-800">Development</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-800">Business</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-800">IT & Software</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-800">Design</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-800">Marketing</a>
         </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="relative flex-grow max-w-xl">
+        <input type="text" placeholder="Search for the software or skills you want to learn"
+               class="w-full py-2 pl-4 pr-10 rounded-full bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-edumy-blue">
+        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="bg-gray-900 w-full z-10 shadow-lg mt-12 fixed">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Edumy Logo -->
-            <div class="text-2xl font-bold text-white">EDUMY</div>
+    <div class="flex items-center space-x-6">
+      <!-- Contact Information -->
+      <span>+(90) 123 456 789</span>
 
-            <!-- Navigation Menu -->
-            <nav class="hidden lg:flex space-x-6 text-white">
-                <!-- Home Dropdown -->
-                <div class="relative dropdown">
-                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Home <span class="material-icons ml-1">expand_more</span></a>
-                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home 1</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home 2</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Home 3</a>
-                    </div>
-                </div>
-
-                <!-- Courses Dropdown -->
-                <div class="relative dropdown">
-                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Courses <span class="material-icons ml-1">expand_more</span></a>
-                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Course 1</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Course 2</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Course 3</a>
-                    </div>
-                </div>
-
-                <!-- Events Dropdown -->
-                <div class="relative dropdown">
-                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Events <span class="material-icons ml-1">expand_more</span></a>
-                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Event 1</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Event 2</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Event 3</a>
-                    </div>
-                </div>
-
-                <!-- Pages Dropdown -->
-                <div class="relative dropdown">
-                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Pages <span class="material-icons ml-1">expand_more</span></a>
-                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Page 1</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Page 2</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Page 3</a>
-                    </div>
-                </div>
-
-                <!-- Blog Dropdown -->
-                <div class="relative dropdown">
-                    <a href="#" class="hover:text-gray-400 flex items-center dropdown-toggle">Blog <span class="material-icons ml-1">expand_more</span></a>
-                    <div class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg dropdown-menu">
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Blog 1</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Blog 2</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-200">Blog 3</a>
-                    </div>
-                </div>
-
-                <!-- Contact -->
-                <a href="#" class="hover:text-gray-400">Contact</a>
-            </nav>
-
-            <!-- Right Side Actions -->
-            <div class="flex space-x-4 items-center">
-                <a href="#" class="text-white hover:text-gray-400">Login/Register</a>
-                <a href="#" class="relative text-white hover:text-gray-400">
-                    <span class="material-icons">shopping_cart</span>
-                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
-                </a>
-                <a href="#" class="text-white hover:text-gray-400">
-                    <span class="material-icons">search</span>
-                </a>
-            </div>
+      <!-- Language Dropdown -->
+      <div class="relative group">
+        <button class="focus:outline-none hover:underline">
+          English <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <div class="dropdown-menu absolute right-0 mt-2 w-40 bg-gray-200 text-gray-800 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-300">French</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-300">Italian</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-300">Spanish</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-300">Turkish</a>
         </div>
-    </header>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <script>
-      $(document).ready(function() {
-        $('.dropdown-toggle').click(function(e) {
-          e.preventDefault();
-          $(this).next('.dropdown-menu').toggle();
-        });
+<!-- Main Navigation Bar -->
+<nav class="bg-neutral-900 text-white sticky top-0 py-4 z-40">
+  <div class="container mx-auto px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24 flex justify-between items-center h-16">
+    <!-- Main Menu -->
+    <ul class="flex space-x-6">
+      <li class="relative group">
+        <button class="focus:outline-none hover:text-edumy-blue transition duration-300">
+          Home <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <ul class="dropdown-menu absolute left-0 mt-2 w-40 bg-gray-200 text-gray-800 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Sub Home 1</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Sub Home 2</a></li>
+        </ul>
+      </li>
+      <li class="relative group">
+        <button class="focus:outline-none hover:text-edumy-blue transition duration-300">
+          Courses <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <ul class="dropdown-menu absolute left-0 mt-2 w-40 bg-gray-200 text-gray-800 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Course 1</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Course 2</a></li>
+        </ul>
+      </li>
+      <li class="relative group">
+        <button class="focus:outline-none hover:text-edumy-blue transition duration-300">
+          Events <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <ul class="dropdown-menu absolute left-0 mt-2 w-40 bg-gray-200 text-gray-800 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Event 1</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Event 2</a></li>
+        </ul>
+      </li>
+      <li class="relative group">
+        <button class="focus:outline-none hover:text-edumy-blue transition duration-300">
+          Pages <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <ul class="dropdown-menu absolute left-0 mt-2 w-40 bg-gray-200 text-gray-800 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Page 1</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Page 2</a></li>
+        </ul>
+      </li>
+      <li class="relative group">
+        <button class="focus:outline-none hover:text-edumy-blue transition duration-300">
+          Blog <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <ul class="dropdown-menu absolute left-0 mt-2 w-40 bg-gray-200 text-gray-800 rounded shadow-lg hidden group-hover:block transition duration-300">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Blog 1</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-300">Blog 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="hover:text-edumy-blue transition duration-300">Contact</a>
+      </li>
+    </ul>
 
-        $(document).click(function(e) {
-          if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').hide();
-          }
-        });
-      });
-    </script>
+    <!-- Right Section -->
+    <div class="flex items-center space-x-4">
+      <button class="text-white hover:text-edumy-blue transition duration-300">
+        <i class="fas fa-volume-up mr-2"></i> Become an Instructor
+      </button>
+      <span class="mx-2 text-gray-500">|</span>
+      <a href="#" class="hover:text-edumy-blue transition duration-300">Login/Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section with Slider -->
+<section class="relative bg-gray-800">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <img src="..\image\1.jpg" alt="Slide 1" class="object-cover w-full h-full">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
+          <h2 class="text-white text-4xl font-bold">START INVESTING IN YOU</h2>
+          <p class="text-white mt-2">Technology is bringing a massive wave of evolution on learning things on different ways</p>
+          <button class="mt-4 bg-white text-black px-4 py-2 rounded-full">Ready to get Started?</button>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <img src="..\image\2.jpg" alt="Slide 2" class="object-cover w-full h-full">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
+          <h2 class="text-white text-4xl font-bold">LEARN AT YOUR OWN PACE</h2>
+          <p class="text-white mt-2">Explore courses tailored to your needs and schedules</p>
+          <button class="mt-4 bg-white text-black px-4 py-2 rounded-full">Explore Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Custom Navigation Buttons -->
+    <div class="swiper-button-prev custom-prev flex items-center justify-center text-white text-sm">
+      <span class="mr-2">&larr;</span>
+      <div class="flex flex-col text-center">
+        <span>PR</span>
+        <span>EV</span>
+      </div>
+    </div>
+    <div class="swiper-button-next custom-next flex items-center justify-center text-white text-sm">
+      <div class="flex flex-col text-center">
+        <span>NE</span>
+        <span>XT</span>
+      </div>
+      <span class="ml-2">&rarr;</span>
+    </div>
+  </div>
+</section>
+
+<!-- Browse Our Top Courses Section -->
+<section class="container mx-auto px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24 py-12">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold">Browse Our Top Courses</h2>
+    <p class="text-gray-600 mt-2">Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Card 1 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image1.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Introduction Web Design with HTML</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+     <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+     <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+     <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+     <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+     <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+     <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
+      <img src="path/to/your/image2.jpg" alt="Course Image" class="w-full h-40 object-cover">
+      <div class="absolute top-2 right-2 text-gray-800"><i class="fas fa-heart"></i></div>
+      <div class="px-4 py-6">
+        <p class="text-sm text-gray-500">Ali TUFAN</p>
+        <h3 class="text-lg font-semibold">Designing a Responsive Mobile Website with Muse</h3>
+        <div class="flex items-center mt-2">
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+          <span class="text-gray-600 ml-2">(6)</span>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center text-gray-500">
+            <i class="fas fa-user mr-1"></i> 1548
+            <i class="fas fa-comment ml-4 mr-1"></i> 25
+          </div>
+          <span class="text-edumy-blue font-semibold">$69.95</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="flex justify-center mt-8">
+  <a href="#" class="bg-transparent border-2 border-edumy-blue text-edumy-blue px-6 py-3 rounded-full text-sm font-semibold hover:bg-edumy-blue hover:text-white transition duration-300 ease-in-out">
+    View All Courses
+  </a>
+</div>
+
+<section class="bg-gray-100 py-12">
+  <div class="container mx-auto flex justify-around text-center">
+      <div class="stat-item">
+          <span class="stat-number text-4xl font-bold text-gray-800" id="stat1" data-target="1000">0</span>
+          <p class="text-xl text-gray-600 mt-2">Happy Customers</p>
+      </div>
+      <div class="stat-item">
+          <span class="stat-number text-4xl font-bold text-gray-800" id="stat2" data-target="500">0</span>
+          <p class="text-xl text-gray-600 mt-2">Projects Completed</p>
+      </div>
+      <div class="stat-item">
+          <span class="stat-number text-4xl font-bold text-gray-800" id="stat3" data-target="200">0</span>
+          <p class="text-xl text-gray-600 mt-2">Hours Worked</p>
+      </div>
+  </div>
+</section>
+<section class="py-12">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-semibold">Upcoming Events</h2>
+    <p class="text-gray-500">Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+  </div>
+
+  < <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="relative">
+            <img class="w-full h-64 object-cover" src="https://via.placeholder.com/400x300" alt="Event 1">
+            <div class="absolute top-4 right-4 bg-white text-center p-2 rounded-md shadow-md">
+              <p class="text-sm font-semibold">28 March</p>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center text-gray-500 text-sm mb-2">
+              <span class="mr-2">8:00 am - 5:00 pm</span>
+              <span>Vancouver, Canada</span>
+            </div>
+            <h3 class="text-lg font-semibold">A Solution Built for Teachers</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="relative">
+            <img class="w-full h-64 object-cover" src="https://via.placeholder.com/400x300" alt="Event 2">
+            <div class="absolute top-4 right-4 bg-white text-center p-2 rounded-md shadow-md">
+              <p class="text-sm font-semibold">28 March</p>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center text-gray-500 text-sm mb-2">
+              <span class="mr-2">8:00 am - 5:00 pm</span>
+              <span>Vancouver, Canada</span>
+            </div>
+            <h3 class="text-lg font-semibold">An Overworked Newspaper Editor</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="relative">
+            <img class="w-full h-64 object-cover" src="https://via.placeholder.com/400x300" alt="Event 3">
+            <div class="absolute top-4 right-4 bg-white text-center p-2 rounded-md shadow-md">
+              <p class="text-sm font-semibold">28 March</p>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center text-gray-500 text-sm mb-2">
+              <span class="mr-2">8:00 am - 5:00 pm</span>
+              <span>Vancouver, Canada</span>
+            </div>
+            <h3 class="text-lg font-semibold">A Solution Built for Teachers</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Pagination -->
+    <div class="swiper-pagination mt-6"></div>
+  </div>
+</section>
+<script>
+  
+  var swiper = new Swiper('.swiper-container', {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  },
+});
+
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+
+<script>
+// Function to start counting
+function startCounting() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const countUp = new CountUp(counter.id, target);
+        if (!countUp.error) {
+            countUp.start();
+        } else {
+            console.error(countUp.error);
+        }
+    });
+}
+
+// Trigger counting when the section is in view
+let hasStartedCounting = false;
+window.addEventListener('scroll', function() {
+    const statsSection = document.querySelector('.bg-gray-100');
+    const sectionPosition = statsSection.getBoundingClientRect().top + window.scrollY;
+    if (window.scrollY + window.innerHeight >= sectionPosition && !hasStartedCounting) {
+        startCounting();
+        hasStartedCounting = true;
+    }
+});
+</script>
+
+
+
+<!-- Footer -->
+<footer class="bg-black text-white py-8 mt-8">
+  <div class="container mx-auto text-center">
+    <p>&copy; 2024 Edumy. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Swiper.js Initialization
+  var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.custom-next',
+      prevEl: '.custom-prev',
+    },
+  });
+
+  // jQuery for Dropdown Functionality
+  $(document).ready(function () {
+    $('.dropdown-menu').parent().hover(function () {
+      $(this).children('.dropdown-menu').stop(true, true).slideDown(200);
+    }, function () {
+      $(this).children('.dropdown-menu').stop(true, true).slideUp(200);
+    });
+  });
+</script>
+
 </body>
 </html>
